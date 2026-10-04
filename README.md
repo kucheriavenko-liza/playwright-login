@@ -1,31 +1,30 @@
-# LoginApp
+# Login E2E Tests
 
-This is a test project containing Angular web app with Login page and Playwright e2e tests that verifies the Login feature.
+This is a test project containing minimal Angular login app and Playwright e2e tests that verifies the Login feature.
 
-## Development server
-
-To start a local development server, run:
+## Setup
 
 ```bash
-ng serve
+npm install
+npx playwright install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Building
-
-To build the project run:
+## Run application
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile the project and store the build artifacts in the `dist/` directory.
+Once the server is running, open your browser and navigate to `http://localhost:4200/`.
 
 ## Running Playwright tests
 
-To execute Playwright tests use the following command:
+```bash
+npx playwright test
+```
+
+## Run tests in headed mode
 
 ```bash
-npm test
+npx playwright test --headed
 ```

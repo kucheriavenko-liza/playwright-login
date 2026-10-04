@@ -1,0 +1,63 @@
+<div class="login-container">
+
+    @if (!isLoggedIn) {
+    <div class="login-card">
+        <h1>Login</h1>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-field">
+                <label for="username">Email*</label>
+
+                <input data-testid="login-email" id="username" type="email" formControlName="username" placeholder="Enter your email"
+                    autocomplete="email" required />
+
+                @if (loginForm.controls.username.touched &&
+                loginForm.controls.username.hasError('required')) {
+                <div class="field-error">
+                    Email is required.
+                </div>
+                }
+
+                @if (loginForm.controls.username.touched &&
+                loginForm.controls.username.hasError('email')) {
+                <div class="field-error">
+                    Please enter a valid email address.
+                </div>
+                }
+            </div>
+
+            <div class="form-field">
+                <label for="password">Password*</label>
+
+                <input data-testid="login-password" id="password" type="password" formControlName="password" placeholder="Enter your password"
+                    autocomplete="current-password" required/>
+
+                @if (loginForm.controls.password.touched &&
+                loginForm.controls.password.hasError('required')) {
+                <div class="field-error">
+                    Password is required.
+                </div>
+                }
+            </div>
+
+            @if (loginError) {
+            <div role="alert" class="error-message" data-testid="login-error">
+                Invalid username or password
+            </div>
+            }
+
+            <button type="submit" data-testid="login-button">Login</button>
+
+        </form>
+    </div>
+    }
+
+    @if (isLoggedIn) {
+    <div class="dashboard">
+        <h1>Welcome!</h1>
+        <p data-testid="login-success">You have successfully logged in.</p>
+    </div>
+    }
+
+</div>
